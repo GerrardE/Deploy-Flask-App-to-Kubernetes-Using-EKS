@@ -1,0 +1,13 @@
+FROM python:stretch
+
+# Create app directory
+COPY . /main
+WORKDIR /main
+
+# Install app dependencies
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
+
+EXPOSE 8080
+ENTRYPOINT ["python", "main.py"]
+CMD ["gunicorn", "--bind", ":8080", "main:APP"]
