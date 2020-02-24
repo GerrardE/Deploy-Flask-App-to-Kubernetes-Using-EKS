@@ -9,7 +9,7 @@ COPY requirements.txt .
 # Install app dependencies
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
-RUN python test_main.py
+RUN pytest test_main.py
 
 COPY . .
 
